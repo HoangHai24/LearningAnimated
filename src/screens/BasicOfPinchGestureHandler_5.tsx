@@ -1,11 +1,19 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, Dimensions, ImageBackground} from 'react-native';
+import { PinchGestureHandler } from 'react-native-gesture-handler';
+import Animated, { useAnimatedGestureHandler } from 'react-native-reanimated';
 
 const imageUrl =
-  'https://www.youtube.com/watch?v=R7vyLItMQJw&list=PLjHsmVtnAr9TWoMAh-3QMiP7bPUqPFuFZ&index=5&ab_channel=Reactiive';
+  'https://images.unsplash.com/photo-1621569642780-4864752e847e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80';
 
+const {width, height} = Dimensions.get('window')
 const BasicOfPinchGestureHandler = () => {
-  return <Image source={{uri: imageUrl}} style={{flex: 1}}></Image>;
+  return (
+    <PinchGestureHandler>
+        <Animated.Image source={{uri: imageUrl}} style={{flex: 1}} ></Animated.Image>;
+    </PinchGestureHandler>
+  )
+  
 };
 export default BasicOfPinchGestureHandler;
 

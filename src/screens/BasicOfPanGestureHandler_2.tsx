@@ -29,13 +29,11 @@ const BasicOfPanGestureHandler = () => {
     const translateX = useSharedValue(0);
     const translateY = useSharedValue(0);
 
-
     const panGestureEvent = useAnimatedGestureHandler<PanGestureHandlerGestureEvent, ContextType>({
         onStart: (event, context) => {
             console.log('panGestureEvent_onStart')
             context.translateX = translateX.value;
             context.translateY = translateY.value;
-
         },
         onActive: (event, context) => {
             translateX.value = event.translationX + context.translateX;

@@ -16,7 +16,7 @@ import BasicOfPinchGestureHandler from './src/screens/BasicOfPinchGestureHandler
 
 const App = () => {
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: 'red'}}>
       <BasicOfPinchGestureHandler />
     </View>
   );
