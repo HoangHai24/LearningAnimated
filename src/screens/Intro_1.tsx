@@ -26,7 +26,7 @@ const Intro = () => {
   const reanimatedStyle = useAnimatedStyle(() => {
     return{
       opacity: progress.value,
-      borderRadius: progress.value * SIZE /2,
+      borderRadius: progress.value * SIZE /2, 
       transform: [
         {scale: scale.value}, 
         {rotate: handleRotation(progress)}
@@ -39,9 +39,11 @@ const Intro = () => {
     scale.value = withRepeat(withSpring(1), 10, true);
   }, [])
   return (
+    <View style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
       <Animated.View 
         style={[{height: SIZE, width: SIZE, backgroundColor: 'blue'}, reanimatedStyle]}
       />
+    </View>
   );
 };
 

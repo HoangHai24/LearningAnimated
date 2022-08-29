@@ -24,7 +24,6 @@ type ContextType = {
     translateY: number,
 
 }
-
 const BasicOfPanGestureHandler = () => {
     const translateX = useSharedValue(0);
     const translateY = useSharedValue(0);
@@ -68,14 +67,15 @@ const BasicOfPanGestureHandler = () => {
         translateY.value = withSpring(0);
     }
   return (
-    <View style={styles.cirle}>
-        <PanGestureHandler onGestureEvent={panGestureEvent}>
-            <Animated.View 
-                style={[styles.square, rStyle]}
-            />
-        </PanGestureHandler>
+    <View style={styles.container}>
+        <View style={styles.cirle}>
+            <PanGestureHandler onGestureEvent={panGestureEvent}>
+                <Animated.View 
+                    style={[styles.square, rStyle]}
+                />
+            </PanGestureHandler>
+        </View>
     </View>
-   
   );
 };
 
