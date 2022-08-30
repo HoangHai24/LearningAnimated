@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {View, Text, StyleSheet, Image, Dimensions, ImageBackground} from 'react-native';
 import { GestureDetector, GestureHandlerRootView, PinchGestureHandler, PinchGestureHandlerGestureEvent } from 'react-native-gesture-handler';
 import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-
+ 
 const imageUrl =
   'https://images.unsplash.com/photo-1621569642780-4864752e847e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80';
 const AnimatedImage = Animated.createAnimatedComponent(Image)
@@ -50,7 +50,7 @@ const BasicOfPinchGestureHandler = () => {
       }
     ]
   }
- })
+ });
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <PinchGestureHandler onGestureEvent={pinchHandler}>

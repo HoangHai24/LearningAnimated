@@ -1,20 +1,75 @@
-import { StatusBar, View, Text, StyleSheet, Image, Dimensions } from "react-native";
-import React from "react";
+import { StatusBar, View, Text, StyleSheet, Image, Dimensions, ImageBackground } from "react-native";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import { GestureHandlerRootView, TapGestureHandler } from "react-native-gesture-handler";
+import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSpring, withTiming } from "react-native-reanimated";
 
 const AnimatedOnDoubleTapLikeInstagram = () => {
+    const scale = useSharedValue(1)
+    const opacity = useSharedValue(0);
+    const doubleTapRef = useRef();
+
+    const rStyle = useAnimatedStyle(() => ({
+        transform: 
+            [{scale: Math.max(scale.value, 0)}]
+        }
+    ));
+    const rTextStyle = useAnimatedStyle(() => ({
+        opacity: opacity.value
+    }))
+    const onSingleTap = useCallback(() => {
+        opacity.value = withTiming(0, undefined, (isFinished) => {
+            if(isFinished){
+                console.log('isFinished', isFinished)
+                opacity.value = withDelay(1000,withTiming(1))
+            }
+        })
+    }, [])
+    const onDoubleTap = useCallback(() => {
+        scale.value = withSpring(1, undefined, (isFinished) => {
+            if(isFinished){
+                console.log('isFinished', isFinished)
+                scale.value = withDelay(1000,withSpring(0))
+            }
+        })
+    }, [])
     return(
         <GestureHandlerRootView style={styles.container}>
             <TapGestureHandler 
-            numberOfTaps={2}
-                onActivated={() => {
-                    console.log('SINGLE TAP');
-                }}
+                waitFor={doubleTapRef}
+                onActivated={onSingleTap}
             >
-                <Image 
-                    source={require('../../assets/karsten-winegeart-60GsdOMRFGc-unsplash.jpg')}
-                    style={styles.image}
-                />
+                <TapGestureHandler 
+                    maxDelayMs={250}
+                    ref={doubleTapRef}
+                    numberOfTaps={2}
+                    onActivated={
+                        onDoubleTap
+                    }
+                >
+                    <Animated.View style={{flex: 1}}>
+                    <ImageBackground 
+                        source={require('../../assets/karsten-winegeart-60GsdOMRFGc-unsplash.jpg')}
+                        style={styles.image}
+                    >
+                        <Animated.Image 
+                            source={require('../../assets/heart_1.png')}
+                            style={[
+                                styles.image,
+                                {
+                                    shadowOffset: { width: 0, height: 20 },
+                                    shadowOpacity: 0.35,
+                                    shadowRadius: 35,
+                                  },
+                                  rStyle
+                            ]}
+                            resizeMode={'center'}
+                        />
+                    </ImageBackground>
+                    <Animated.Text style={[styles.turtles, rTextStyle]}>
+                        🐢🐢🐢🐢
+                    </Animated.Text>
+                    </Animated.View>
+                </TapGestureHandler>
             </TapGestureHandler>
         </GestureHandlerRootView>
     )
@@ -27,12 +82,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     image: {
         width: SIZE,
-        height: SIZE
-    }
+        height: SIZE,
+    },
+    turtles: { fontSize: 40, textAlign: 'center', marginTop: 30 },
+
 })
 // import React, { useCallback, useRef } from 'react';
 // import {
