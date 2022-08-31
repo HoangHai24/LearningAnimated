@@ -25,7 +25,7 @@ import {
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
 } from 'react-native-gesture-handler';
-import {Page} from '../components/Page';
+import {Page} from '../components/Page_3';
 
 const SIZE = 100;
 const WORDS = ["What's", 'up', 'mobile', "dev's"];
