@@ -15,11 +15,12 @@ import InterpolateColors from './src/screens/InterpolateColors_4';
 import BasicOfPinchGestureHandler from './src/screens/BasicOfPinchGestureHandler_5';
 import AnimatedOnDoubleTapLikeInstagram from './src/screens/AnimatedOnDoubleTapLikeInstagram_6';
 import ScrollViewFromScratchWithPanGestureHandler from './src/screens/ScrollViewFromScratchWithPanGestureHandler_7';
+import ColorPickerAnimation from './src/screens/ColorPickerAnimation_8';
 
 const App = () => {
   return (
     // <View style={{flex: 1, backgroundColor: 'red'}}>
-      <ScrollViewFromScratchWithPanGestureHandler />
+      <ColorPickerAnimation />
     // </View>
   );
 };
