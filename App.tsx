@@ -17,11 +17,12 @@ import AnimatedOnDoubleTapLikeInstagram from './src/screens/06_AnimatedOnDoubleT
 import ScrollViewFromScratchWithPanGestureHandler from './src/screens/07_ScrollViewFromScratchWithPanGestureHandler';
 import ColorPickerAnimation from './src/screens/08_ColorPickerAnimation';
 import CircularProgressBar from './src/screens/09_CircularProgressBar';
+import SwipeToDelete from './src/screens/10_SwipeToDelete';
 
 const App = () => {
   return (
     // <View style={{flex: 1, backgroundColor: 'red'}}>
-      <CircularProgressBar />
+      <SwipeToDelete />
     // </View>
   );
 };

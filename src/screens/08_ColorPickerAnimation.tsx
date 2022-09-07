@@ -2,6 +2,7 @@ import React, {useEffect, useCallback, useState} from "react";
 import { View, Text, Dimensions, StyleSheet } from "react-native";
 import Animated, {useAnimatedStyle, useSharedValue} from "react-native-reanimated";
 import {ColorPicker}  from "../components/ColorPicker";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const COLORS = [
     'red',
@@ -37,7 +38,7 @@ const ColorPickerAnimation = () => {
   });
 
     return(
-        <View style={{flex:1, backgroundColor: 'red'}}>
+        <GestureHandlerRootView style={{flex:1, backgroundColor: 'red'}}>
             <View style={styles.topContainer}/>
             <View style={styles.bottomContainer}>
             <ColorPicker
@@ -49,7 +50,7 @@ const ColorPickerAnimation = () => {
               onColorChanged={onColorChanged}
             />
             </View>
-        </View>
+        </GestureHandlerRootView>
     )
 }
 
